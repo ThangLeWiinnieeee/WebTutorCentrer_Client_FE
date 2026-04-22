@@ -3,6 +3,7 @@ const API_ENDPOINTS = {
     REGISTER: "/auth/register",
     VERIFY_OTP: "/auth/verify-otp",
     RESEND_OTP: "/auth/resend-otp",
+    GOOGLE_LOGIN: "/auth/google",
     LOGIN: "/auth/login",
     LOGOUT: "/auth/logout",
     REFRESH_TOKEN: "/auth/refresh-token",

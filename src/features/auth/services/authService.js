@@ -11,6 +11,9 @@ const authService = {
   resendOtp: (data) =>
     axiosInstance.post(API_ENDPOINTS.AUTH.RESEND_OTP, data),
 
+  googleLogin: (data) =>
+    axiosInstance.post(API_ENDPOINTS.AUTH.GOOGLE_LOGIN, data),
+
   login: (data) =>
     axiosInstance.post(API_ENDPOINTS.AUTH.LOGIN, data),
 

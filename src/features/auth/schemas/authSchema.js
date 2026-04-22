@@ -9,9 +9,16 @@ export const registerSchema = z
     phone: z
       .string()
       .regex(phoneRegex, "Số điện thoại không hợp lệ (phải là số VN 10 số)"),
+    dateOfBirth: z
+      .string()
+      .min(1, "Ngày sinh là bắt buộc")
+      .refine((val) => !isNaN(Date.parse(val)), "Ngày sinh không hợp lệ")
+      .refine(
+        (val) => new Date(val) <= new Date(),
+        "Ngày sinh không được lớn hơn thời gian hiện tại"
+      ),
     password: z.string().min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
     confirmPassword: z.string(),
-    role: z.enum(["student", "tutor"]).default("student"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Mật khẩu xác nhận không khớp",
