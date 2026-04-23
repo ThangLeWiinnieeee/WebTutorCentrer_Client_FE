@@ -11,6 +11,8 @@ const API_ENDPOINTS = {
     VERIFY_FORGOT_PASSWORD_OTP: "/auth/verify-forgot-password-otp",
     RESET_PASSWORD: "/auth/reset-password",
     USER_INFO: "/auth/user-info",
+    UPDATE_PROFILE: "/auth/update-profile",
+    UPLOAD_AVATAR: "/auth/upload-avatar",
   },
 };
 

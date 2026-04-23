@@ -19,7 +19,9 @@ const LoginPage = () => {
   const onGoogleSuccess = async (credentialResponse) => {
     const result = await dispatch(googleLoginThunk(credentialResponse.credential));
     if (googleLoginThunk.fulfilled.match(result)) {
-      navigate("/", { replace: true });
+      const user = result.payload?.user;
+      const needsProfile = user && (!user.phone || !user.dateOfBirth);
+      navigate(needsProfile ? "/complete-profile" : "/", { replace: true });
     }
   };
 

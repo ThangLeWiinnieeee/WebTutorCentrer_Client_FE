@@ -6,6 +6,8 @@ import {
   registerThunk,
   logoutThunk,
   getUserInfoThunk,
+  updateProfileThunk,
+  uploadAvatarThunk,
 } from "./authThunks";
 
 const existingToken = tokenStorage.get();
@@ -106,6 +108,36 @@ const authSlice = createSlice({
         state.accessToken = null;
         state.isAuthenticated = false;
         state.initialized = true;
+      });
+
+    // Update profile
+    builder
+      .addCase(updateProfileThunk.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateProfileThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateProfileThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+
+    // Upload avatar
+    builder
+      .addCase(uploadAvatarThunk.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(uploadAvatarThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(uploadAvatarThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

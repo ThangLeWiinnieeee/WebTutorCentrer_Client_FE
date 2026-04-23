@@ -34,6 +34,14 @@ const authService = {
 
   getUserInfo: () =>
     axiosInstance.get(API_ENDPOINTS.AUTH.USER_INFO),
+
+  updateProfile: (data) =>
+    axiosInstance.patch(API_ENDPOINTS.AUTH.UPDATE_PROFILE, data),
+
+  uploadAvatar: (formData) =>
+    axiosInstance.post(API_ENDPOINTS.AUTH.UPLOAD_AVATAR, formData, {
+      headers: { "Content-Type": undefined },
+    }),
 };
 
 export default authService;

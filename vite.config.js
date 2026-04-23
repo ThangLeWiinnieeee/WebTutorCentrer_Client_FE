@@ -10,6 +10,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    include: ["@radix-ui/react-select"],
+  },
   server: {
     port: 4000,
   },

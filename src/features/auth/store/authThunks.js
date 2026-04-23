@@ -90,3 +90,29 @@ export const getUserInfoThunk = createAsyncThunk(
     }
   }
 );
+
+export const updateProfileThunk = createAsyncThunk(
+  "auth/updateProfile",
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await authService.updateProfile(data);
+      return res.data.data.user;
+    } catch (err) {
+      return rejectWithValue(err.response?.data?.message || "Cập nhật thất bại");
+    }
+  }
+);
+
+export const uploadAvatarThunk = createAsyncThunk(
+  "auth/uploadAvatar",
+  async (file, { rejectWithValue }) => {
+    try {
+      const formData = new FormData();
+      formData.append("avatar", file);
+      const res = await authService.uploadAvatar(formData);
+      return res.data.data.user;
+    } catch (err) {
+      return rejectWithValue(err.response?.data?.message || "Tải ảnh lên thất bại");
+    }
+  }
+);

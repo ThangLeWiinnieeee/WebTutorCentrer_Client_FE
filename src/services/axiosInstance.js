@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
 
     // Hiện toast thành công cho các action của người dùng (không phải GET và không phải endpoint ngầm)
     if (method !== "GET" && !isSilent && data?.message) {
-      toast.success(data.message);
+      toast.success(data.message, { duration: 1500 });
     }
 
     return response;
@@ -84,9 +84,9 @@ axiosInstance.interceptors.response.use(
     // Hiển thị toast cho tất cả lỗi người dùng (4xx) và lỗi hệ thống (5xx)
     if (status && status >= 400) {
       if (status >= 500) {
-        toast.error("Lỗi hệ thống, vui lòng thử lại sau");
+        toast.error("Lỗi hệ thống, vui lòng thử lại sau", { duration: 2500 });
       } else {
-        toast.error(message || "Đã có lỗi xảy ra, vui lòng thử lại");
+        toast.error(message || "Đã có lỗi xảy ra, vui lòng thử lại", { duration: 2500 });
       }
     }
 

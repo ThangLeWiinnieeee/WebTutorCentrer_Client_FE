@@ -5,7 +5,7 @@ import MainLayout from "@/layouts/MainLayout";
 import ProtectedRoute from "@/components/shared/ProtectedRoute";
 import GuestRoute from "@/components/shared/GuestRoute";
 import HomePage from "@/pages/HomePage";
-import { ProfilePage } from "@/features/profile";
+import { ProfilePage, CompleteProfilePage } from "@/features/profile";
 
 import {
   LoginPage,
@@ -37,7 +37,15 @@ const router = createBrowserRouter([
     ],
   },
 
-  // Protected routes (cần đăng nhập)
+  // Protected routes (cần đăng nhập, bỏ qua kiểm tra profile hoàn chỉnh)
+  {
+    element: <ProtectedRoute skipProfileCheck />,
+    children: [
+      { path: "/complete-profile", element: <CompleteProfilePage /> },
+    ],
+  },
+
+  // Protected routes (cần đăng nhập + profile đầy đủ)
   {
     element: <ProtectedRoute />,
     children: [
