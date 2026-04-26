@@ -39,6 +39,7 @@ const Header = () => {
                   <img
                     src={user.avatar}
                     alt={user.fullName}
+                    referrerPolicy="no-referrer"
                     className="h-8 w-8 rounded-full object-cover ring-2 ring-slate-200"
                   />
                 ) : (
